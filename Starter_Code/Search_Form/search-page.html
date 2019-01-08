@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+	
+		<title>Blank Template</title>
+		
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<h1>My Search page</h1>
+			</header> 	
+			<div id="main">
+				
+			</div>
+			<footer>
+			
+			</footer>
+		</div><!-- #container --> 
+		<script type="text/javascript">
+			function queryObj() {
+
+				// http://www.example.com/index.html
+				//console.log(location.search.substring(1)); // no query string, so displays nothing
+
+				// http://www.example.com/index.html?property=value
+				//console.log(location.search.substring(1)); // should display "property=value"
+
+				//display what is after the question mark
+			    var result = {}, queryString = location.search.slice(1), re = /([^&=]+)=([^&]*)/g, m;
+//regular expression : That is a Regular Expression.
+
+/*They are a string of characters which allows you to match patterns in other strings to perform complex searches on bodies of text.
+
+In the case above the regular expression is designed to match parameters in a query string allowing you to perform functions on each one individually.
+
+Check this site out for tutorials and reference on using regular expressions: http://www.regular-expressions.info/tutorial.html */
+
+//https://www.youtube.com/watch?v=PpbFyLTtpWI
+//https://www.youtube.com/watch?v=U87UmD-5h4o
+			    while (m = re.exec(queryString)) {
+//.exec() This method returns the matched text if it finds a match, otherwise it returns null.
+			        result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+			    }
+//URI https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn
+			    return result;
+			}
+			$("#main").append("You searched for " + queryObj()["q"]);
+		</script>
+	</body>
+</html>
